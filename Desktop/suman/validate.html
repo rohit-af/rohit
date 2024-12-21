@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myForm {
+  width: 50%;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"], input[type="number"] {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"], button[type="reset"] {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover, button[type="reset"]:hover {
+  background-color: #3e8e41;
+}
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" pattern="[a-zA-Z]+" required><br><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" pattern="[0-9]{2}" required><br><br>
+        <label for="salary">Salary:</label>
+        <input type="number" id="salary" name="salary" pattern="[0-9]{4}" required><br><br>
+        <label for="tax">Tax:</label>
+        <input type="number" id="tax" name="tax" required><br><br>
+        <button type="submit">Submit</button>
+        <button type="reset">Clear</button>
+      </form>
+    <script>
+        const form = document.getElementById('myForm');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const age = document.getElementById('age').value;
+  const salary = document.getElementById('salary').value;
+  const tax = document.getElementById('tax').value;
+
+  // Validate input values
+  if (!name.match(/^[a-zA-Z]+$/)) {
+    alert('Name must contain only alphabets');
+    return;
+  }
+
+  if (!age.match(/^[0-9]{2}$/)) {
+    alert('Age must be a 2-digit number');
+    return;
+  }
+
+  if (!salary.match(/^[0-9]{4}$/)) {
+    alert('Salary must be a 4-digit number');
+    return;
+  }
+
+  // Calculate tax
+  const taxAmount = salary * 0.1;
+  document.getElementById('tax').value = taxAmount;
+
+  // Submit the form
+  // You can add your logic here to submit the form
+  console.log('Form submitted');
+});
+
+form.addEventListener('reset', () => {
+  document.getElementById('name').value = '';
+  document.getElementById('age').value = '';
+  document.getElementById('salary').value = '';
+  document.getElementById('tax').value = '';
+});
+    </script>
+</body>
+</html>

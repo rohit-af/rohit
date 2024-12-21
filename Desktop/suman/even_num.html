@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" id="text1" placeholder="enter a number">
+        <button onclick="print_even()">result</button>
+        <p id="p"></p>
+    </div>
+    <div class="box2">
+        <input type="text" id="leap" placeholder="enter a year">
+        <button onclick="leap_year()">result</button>
+        <p id="p2"></p>
+    </div>
+    <div class="box3">
+        <input type="text" id="salary" placeholder="enter your salary">
+        <button onclick="calculate()">result</button>
+        <p id="p3"></p>
+    </div>
+    <script>
+        function print_even() {
+            var t = " ";
+            var x = parseInt(document.getElementById("text1").value);
+            for (let i = 2; i <= x; i = i + 2) {
+                t = t + i + "<br>";
+            }
+            document.getElementById("p").innerHTML = t;
+        }
+        function leap_year() {
+            var y = parseInt(document.getElementById("leap").value);
+            if ((y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0)) {
+                document.getElementById("p2").innerHTML = "yes";
+            }
+            else {
+                document.getElementById("p2").innerHTML = "no";
+            }
+        }
+        function calculate() {
+            let sal = document.getElementById("salary").value;
+            sal = parseInt(sal);
+            let tax;
+            if (sal > 300000) {
+                tax = 0.05 * sal;
+                document.getElementById("p3").innerHTML = tax;
+            }
+            else if (sal > 300000 && sal < 700000) {
+                tax = 0.15 * sal;
+                document.getElementById("p3").innerHTML = tax;
+            }
+            else if (sal > 700000 && sal < 1000000) {
+                tax = 0.20 * sal;
+                document.getElementById("p3").innerHTML = tax;
+            }
+            else if (sal > 1000000) {
+                tax = 0.30 * sal;
+                document.getElementById("p3").innerHTML = tax;
+            }
+        }   
+    </script>
+</body>
+
+</html>
